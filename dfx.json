@@ -22,5 +22,9 @@
     }
   },
   "output_env_file": ".env",
-  "version": 1
+  "version": 1,
+  "frontend": {
+    "entrypoint": "src/fortuneForest_frontend/src/index.html",
+    "output": "dist/"
+  }
 }
