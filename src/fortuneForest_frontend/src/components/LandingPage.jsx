@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "./ui/button";
+import RegisterModal from './auth/RegisterModal';
+import LoginModal from './auth/LoginModal';
 
 const LandingPage = () => {
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
     return (
-        <div className="fixed inset-0 overflow-hidden -z-10">
+        <div className="fixed inset-0 overflow-hidden -z-10 min-h-screen">
             <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
@@ -21,7 +26,7 @@ const LandingPage = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <motion.span
-                            className="text-7xl font-inter font-extrabold text-green-600 mr-4"
+                            className="text-7xl font-['Bubblegum_Sans'] font-extrabold text-green-600 mr-4"
                             initial={{ x: -100 }}
                             animate={{ x: 0 }}
                             transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
@@ -70,7 +75,7 @@ const LandingPage = () => {
                         </motion.span>
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-green-700 max-w-2xl mx-auto"
+                        className="text-xl text-green-700 max-w-2xl mx-auto mb-8"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.8 }}
@@ -78,12 +83,16 @@ const LandingPage = () => {
                         Play, Explore, and Reforest. Turn your game rewards into real-world trees!
                     </motion.p>
                 </div>
-                <div className="w-full flex justify-between items-end overflow-hidden">
-                    <img src="tree.gif" alt="Left tree" className="w-1/3 h-auto -mb-10 -ml-10" />
-                    <img src="tree.gif" alt="Center tree" className="w-1/4 h-auto mb-0" />
-                    <img src="tree.gif" alt="Right tree" className="w-1/3 h-auto -mb-10 -mr-10" />
+                <div className="w-full flex justify-center items-end overflow-hidden">
+                    <img
+                        src="tree.gif"
+                        alt="Center tree"
+                        className="h-auto max-h-[80vh] w-auto max-w-[90%] object-contain mb-0"
+                    />
                 </div>
             </main>
+            <RegisterModal isOpen={isRegisterModalOpen} onClose={() => setIsRegisterModalOpen(false)} />
+            <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
         </div>
     );
 };

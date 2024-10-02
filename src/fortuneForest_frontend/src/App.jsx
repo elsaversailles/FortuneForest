@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen">
+    <div>
       <LandingPage />
       <div className="relative z-10">
         <Header />
